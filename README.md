@@ -24,7 +24,7 @@ write access to the bucket, both need list/read/download access to the bucket
 openssl syntax `path:<full path to text file>`, which is a much better option
 
 - Make sure you use a persistent volume for the backend container and map it to the /opt/flauthority path, 
-so that you don't miss all your data! If recreating/scaling the frontend you should make sure you 
+so that you don't lose your CA data! If recreating/scaling the frontend you should make sure you 
 hit the `POST:/api/updatecrl` against each of the frontend containers, as this will download an actual copy of the crl
 and make it available for the frontend.
 
@@ -34,7 +34,7 @@ If you change the loglevel using config.ini (and not the env variable), celery i
 run with the default loglevel of warning
 
 ### Generate a CA using the default openssl file
-Run this inside the backend container after it's started the first time:  
+Run this inside the backend container after it's started the first time in order to generate the certificate:  
 
 Get into the container by issuing `docker exec -it <backend-container-id> /bin/bash`
 
