@@ -1,5 +1,5 @@
 ### Flauthority  
-A lightweight CA with a rest api
+A lightweight CA with a rest api, built with Flask, Celery and redis
 
 ### Run as container
 - Use docker-compose to spin up 3 containers; frontend, backend, redis
@@ -20,7 +20,7 @@ You can use separate keys for frontend and backend. Backend must have
 write access to the bucket, both need list/read/download access to the bucket 
 
 # Recommended configuration
-- Make sure you protect the ca key passphrase. The default config.ini sets this to `pass:Hello`, but you can also use
+- Make sure you protect the ca key passphrase. The default config.ini sets this to `pass:hello`, but you can also use
 openssl syntax `path:<full path to text file>`, which is a much better option
 
 - Make sure you use a persistent volume for the backend container and map it to the /opt/flauthority path, 
@@ -41,7 +41,7 @@ Get into the container by issuing `docker exec -it <backend-container-id> /bin/b
 Note that you have to make sure that the Country/state/locality/Company name you type in when you enter the commands below
 are the same as the one in the config.ini file! By default those will be:
 ```
-CA cert key passphrase: Hello
+CA cert key passphrase: hello
 Country: NO
 State or Province: Norway
 Locality Name: Oslo
