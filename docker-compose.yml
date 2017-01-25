@@ -1,0 +1,47 @@
+version: '2'
+services:
+    flauthority-frontend:
+        build:
+            context: ./
+            dockerfile: Dockerfile-frontend
+        image: flauthority-frontend:latest
+        ports:
+        - "3000:3000"
+        depends_on:
+        - celery_redis
+        links:
+        - celery_redis
+        environment:
+          CELERY_BROKER_URL: redis://celery_redis:6379/0
+          CELERY_RESULT_BACKEND: redis://celery_redis:6379/0
+          Flask_tcp_port: 3000
+          Flauthority_Frontend: "True"
+          flask_run_debug: "True"
+          logging_level: warning
+          aws_key:
+          aws_key_secret:
+          aws_bucket_name:
+          aws_s3_host_name:
+        expose:
+        - "3000"
+    flauthority-backend:
+        build:
+            context: ./
+            dockerfile: Dockerfile-backend
+        image: flauthority-backend:latest
+        depends_on:
+        - celery_redis
+        links:
+        - celery_redis
+        environment:
+          CELERY_BROKER_URL: redis://celery_redis:6379/0
+          CELERY_RESULT_BACKEND: redis://celery_redis:6379/0
+          Flauthority_Backend: "True"
+          logging_level: warning
+          aws_key:
+          aws_key_secret:
+          aws_bucket_name:
+          aws_s3_host_name:
+    celery_redis:
+      image: 'redis'
+

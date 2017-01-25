@@ -1,0 +1,23 @@
+{
+  "rbac": [
+    {
+      "user": "admin",
+      "password": "admin",
+      "inventories": [
+        "username admin has implicit access to all inventories",
+        "no need to specify anything here"
+      ]
+
+    },
+    {
+      "user": "devadmin",
+      "password": "devpassword",
+      "inventories": [
+        "/some/folder/dev",
+        "/home/thadministrator/hosts"
+      ]
+
+    }
+
+  ]
+}

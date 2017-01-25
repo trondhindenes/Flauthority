@@ -1,0 +1,11 @@
+FROM ubuntu:latest
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential python-software-properties libssl-dev libffi-dev git nodejs npm
+RUN pip install --upgrade pip
+RUN mkdir /opt/flauthority_app
+WORKDIR /opt/flauthority_app
+copy . /opt/flauthority_app/
+ENV Flauthority_Backend=True
+copy . /opt/flauthority_app/
+RUN pip install -r requirements.txt
+CMD ["/bin/bash","run_backend.sh"]
