@@ -1,5 +1,7 @@
 ### Flauthority  
-A lightweight CA with a rest api, built with Flask, Celery and redis
+A lightweight CA with a rest api, built with Flask, Celery and redis. 
+
+Make a http/json request to flauthority, get a link back to a zip file containing the generated certificate, key, passphrase, root ca. All the things. Fully swaggerized.
 
 ### Run as container
 - Use docker-compose to spin up 3 containers; frontend, backend, redis
