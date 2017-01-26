@@ -8,12 +8,12 @@ services:
         ports:
         - "3000:3000"
         depends_on:
-        - celery_redis
+        - celeryredis
         links:
-        - celery_redis
+        - celeryredis
         environment:
-          CELERY_BROKER_URL: redis://celery_redis:6379/0
-          CELERY_RESULT_BACKEND: redis://celery_redis:6379/0
+          CELERY_BROKER_URL: redis://celeryredis:6379/0
+          CELERY_RESULT_BACKEND: redis://celeryredis:6379/0
           Flask_tcp_port: 3000
           Flauthority_Frontend: "True"
           flask_run_debug: "True"
@@ -30,12 +30,12 @@ services:
             dockerfile: Dockerfile-backend
         image: flauthority-backend:latest
         depends_on:
-        - celery_redis
+        - celeryredis
         links:
-        - celery_redis
+        - celeryredis
         environment:
-          CELERY_BROKER_URL: redis://celery_redis:6379/0
-          CELERY_RESULT_BACKEND: redis://celery_redis:6379/0
+          CELERY_BROKER_URL: redis://celeryredis:6379/0
+          CELERY_RESULT_BACKEND: redis://celeryredis:6379/0
           Flauthority_Backend: "True"
           logging_level: warning
           aws_key:
