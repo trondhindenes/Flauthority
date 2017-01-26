@@ -40,7 +40,7 @@ Run this inside the backend container after it's started the first time in order
 
 Get into the container by issuing `docker exec -it <backend-container-id> /bin/bash`
 
-Note that you have to make sure that the Country/state/locality/Company name you type in when you enter the commands below
+Note that if you're using the default openssl config you have to make sure that the Country/state/locality/Company name you type in when you enter the commands below
 are the same as the one in the config.ini file! By default those will be:
 ```
 CA cert key passphrase: hello
@@ -51,6 +51,8 @@ Organization Name: Test
 Common Name: TestCA
 (the other options can be left blank)
 ```
+
+(the reason for this can be found in the `policy_strict` section of the openssl config file)
 
 Then run (command by command, the openssl commands dont work well with multi-line pasteing):
 ```
