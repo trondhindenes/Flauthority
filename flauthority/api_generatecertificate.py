@@ -7,6 +7,9 @@ from flask import make_response
 from ModelClasses import RequestResultModel, GenerateCertificateModel
 from helpers import util_functions
 import celery_runner
+import logging
+
+logger = logging.getLogger('flauthority')
 
 class GenerateCertificate(Resource):
     @swagger.operation(
@@ -53,8 +56,10 @@ class GenerateCertificate(Resource):
         }
 
         allow_cert_extension = appconfig['allow_cert_extension']
-        allow = [x for x in allow_cert_extension if x == cert_extension]
+        allow = [x for x in allow_cert_extension if x.strip() == cert_extension]
         if len(allow) == 0:
+            logger.warning(str.format("Template requested: {1}, allowed extension: {1}", cert_extension,
+                                      str(allow_cert_extension)))
             return make_response("Invalid cert extension", )
 
         task_result = celery_runner.generate_certificate.apply_async([task_obj], soft=task_timeout, hard=task_timeout)

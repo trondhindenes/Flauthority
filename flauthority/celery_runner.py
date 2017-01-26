@@ -170,7 +170,20 @@ def generate_certificate(self, task, type='flauthority'):
 @celery.task(bind=True)
 def update_crl(self, task, type='flauthority'):
     with app.app_context():
-        cmd = task
+        ca_config_file = appconfig['ca_config_file']
+        ca_crl_file = appconfig['ca_crl_file']
+        ca_key_passphrase = appconfig['ca_key_passphrase']
+        ca_key_file = appconfig['ca_key_file']
+        aws_key = appconfig['aws_key']
+        aws_key_secret = appconfig['aws_key_secret']
+        aws_bucket_name = appconfig['aws_bucket_name']
+        aws_s3_host_name = appconfig['aws_s3_host_name']
+        flask_clr_path = appconfig['flask_clr_path']
+
+        task_timeout = appconfig['task_timeout']
+        cmd = str.format('openssl ca -config {0} -gencrl -out {1} -passin {2} -keyfile {3}',
+                             ca_config_file, ca_crl_file, ca_key_passphrase, ca_key_file)
+
         output = ""
         self.update_state(state='PROGRESS',
                           meta={'output': output,

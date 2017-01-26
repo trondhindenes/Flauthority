@@ -74,6 +74,10 @@ except:
 
 logger = log.setup_custom_logger(logging_level)
 
+for key in appconfig.keys():
+    value = appconfig[key]
+    logger.info(str.format("{0}:{1}", key, str(value)))
+
 api = swagger.docs(Api(app), apiVersion='0.1')
 
 celery = Celery(app.name, broker=appconfig['broker_url'], backend=appconfig['result_backend'])

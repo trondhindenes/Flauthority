@@ -63,16 +63,12 @@ mkdir private
 mkdir certs
 mkdir crl
 openssl genrsa -aes256 -out /opt/flauthority/private/ca.key.pem 4096   
-openssl req -config openssl.cnf \
-      -key private/ca.key.pem \
-      -new -x509 -days 7300 -sha256 -extensions v3_ca \
-      -out certs/ca.cert.pem
+openssl req -config openssl.cnf -key private/ca.key.pem -new -x509 -days 7300 -sha256 -extensions v3_ca -out certs/ca.cert.pem
 touch index.txt
 touch index.txt.attr
 echo 1000 > serial
 echo "01" > crlnumber
-openssl ca -config openssl.cnf -cert certs/ca.cert.pem -gencrl -out /opt/flauthority/crl/ca.crl.pem \
-    -keyfile /opt/flauthority/private/ca.key.pem
+openssl ca -config openssl.cnf -cert certs/ca.cert.pem -gencrl -out /opt/flauthority/crl/ca.crl.pem -keyfile /opt/flauthority/private/ca.key.pem
 ```
 
 ### Access it

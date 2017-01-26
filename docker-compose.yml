@@ -42,6 +42,6 @@ services:
           aws_key_secret:
           aws_bucket_name:
           aws_s3_host_name:
-    celery_redis:
+    celeryredis:
       image: 'redis'
 
