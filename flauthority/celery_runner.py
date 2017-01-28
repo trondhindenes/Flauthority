@@ -28,6 +28,7 @@ def generate_certificate(self, task, type='flauthority'):
 
         subject_name = task['subject_name']
         cert_extension = task['cert_extension']
+        cert_validity_days = task['validity_days']
 
         work_folder = appconfig['work_folder']
         ca_config_file = appconfig['ca_config_file']
@@ -40,7 +41,6 @@ def generate_certificate(self, task, type='flauthority'):
         ca_st = appconfig['ca_st']
         ca_l = appconfig['ca_l']
         ca_o = appconfig['ca_o']
-        cert_validity_days = appconfig['cert_validity_days']
         auto_add_domain = appconfig['auto_add_domain']
         cert_storage_folder = appconfig['cert_storage_folder']
 
@@ -87,7 +87,7 @@ def generate_certificate(self, task, type='flauthority'):
                              '&& echo generating client private key'
                              '&& openssl genrsa -aes256 -out {1}.key.pem -passout file:{1}.passphrase.txt 2048'
                              '&& echo generating client csr'
-                             '&& openssl req -config {2} -key {1}.key.pem -new -sha256 -out {1}.csr.pem -passin file:{1}.passphrase.txt -subj "/C={7}/ST={8}/L={9}/O={10}/CN={1}"'
+                             '&& openssl req -config {2} -key {1}.key.pem -new -sha256 -out {1}.csr.pem -passin file:{1}.passphrase.txt -subj "/C={7}/ST={8}/L={9}/O={10}/CN={1}" -days {11}'
                              '&& echo signing cert'
                              '&& openssl ca -config {2} -extensions {6} -days {11} -notext -md sha256 -in {1}.csr.pem -out {1}.cert.pem -passin {5} -batch -notext',
                              work_folder, subject_name, ca_config_file, client_private_key_password,

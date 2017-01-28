@@ -1,0 +1,7 @@
+*.pyc
+.vs/y
+.vs/
+.idea/
+.vagrant/
+*.retry
+trond*.*

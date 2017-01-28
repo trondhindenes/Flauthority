@@ -51,7 +51,6 @@ try:
     appconfig['ca_o'] = ConfigHelper.get_config_variable(config, "Default", "ca_o")
     appconfig['allow_subject_names'] = ConfigHelper.get_config_variable(config, "Default", "allow_subject_names").split(",")
     appconfig['allow_cert_extension'] = ConfigHelper.get_config_variable(config, "Default", "allow_cert_extension").split(",")
-    appconfig['cert_validity_days'] = int(ConfigHelper.get_config_variable(config, "Default", "cert_validity_days"))
     appconfig['auto_add_domain'] = ConfigHelper.get_config_variable(config, "Default", "auto_add_domain")
     appconfig['ca_crl_file'] = ConfigHelper.get_config_variable(config, "Default", "ca_crl_file")
     appconfig['cert_storage_folder'] = ConfigHelper.get_config_variable(config, "Default", "cert_storage_folder")
@@ -60,6 +59,8 @@ try:
     appconfig['auto_revoke_certs'] = ConfigHelper.get_config_variable(config, "Default", "auto_revoke_certs")
     appconfig['save_client_key_passphrase'] = ConfigHelper.get_config_variable(config, "Default", "save_client_key_passphrase")
     appconfig['flask_clr_path'] = ConfigHelper.get_config_variable(config, "Default", "flask_clr_path")
+    appconfig['max_cert_lifetime'] = ConfigHelper.get_config_variable(config, "Default", "max_cert_lifetime", 375)
+    appconfig['default_cert_lifetime'] = ConfigHelper.get_config_variable(config, "Default", "default_cert_lifetime", 375)
 
 except:
     print "Unexpected error:", sys.exc_info()[0]

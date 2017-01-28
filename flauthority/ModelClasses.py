@@ -38,7 +38,7 @@ class AnsiblePlaybookModel:
         'playbook': fields.String,
         'inventory': fields.String,
         'extra_vars': fields.Raw,
-        'forks' : fields.Integer,
+        'forks': fields.Integer,
         'verbose_level': fields.Integer,
         'become': fields.Boolean,
         'update_git_repo': fields.Boolean,
@@ -49,7 +49,8 @@ class AnsiblePlaybookModel:
 class GenerateCertificateModel:
     resource_fields = {
         'subject_name': fields.String,
-        'cert_extension': fields.String
+        'cert_extension': fields.String,
+        'cert_lifetime_days': fields.Integer
     }
 
 @swagger.model
