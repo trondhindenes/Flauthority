@@ -90,10 +90,10 @@ the default username and password of the web interface is admin:admin,
 a better role based access system is in the works!
 
 ### Resources
-https://blogs.technet.microsoft.com/pki/2006/11/30/basic-crl-checking-with-certutil/
-https://jamielinux.com/docs/openssl-certificate-authority/create-the-root-pair.html
-https://skippylovesmalorie.wordpress.com/2010/02/12/how-to-generate-a-self-signed-certificate-using-pyopenssl/
-http://russellsimpkins.blogspot.no/2015/10/consul-adding-tls-using-self-signed.html
-https://datacenteroverlords.com/2012/03/01/creating-your-own-ssl-certificate-authority/
-http://www.shellhacks.com/en/HowTo-Create-CSR-using-OpenSSL-Without-Prompt-Non-Interactive
-http://www.gettingcirrius.com/2012/06/automating-creation-of-certificate.html
+https://blogs.technet.microsoft.com/pki/2006/11/30/basic-crl-checking-with-certutil/   
+https://jamielinux.com/docs/openssl-certificate-authority/create-the-root-pair.html   
+https://skippylovesmalorie.wordpress.com/2010/02/12/how-to-generate-a-self-signed-certificate-using-pyopenssl/   
+http://russellsimpkins.blogspot.no/2015/10/consul-adding-tls-using-self-signed.html   
+https://datacenteroverlords.com/2012/03/01/creating-your-own-ssl-certificate-authority/   
+http://www.shellhacks.com/en/HowTo-Create-CSR-using-OpenSSL-Without-Prompt-Non-Interactive   
+http://www.gettingcirrius.com/2012/06/automating-creation-of-certificate.html   
