@@ -1,0 +1,9 @@
+celery[redis]>=4.0,<5.0
+#celery[librabbitmq]>=4.0,<5.0
+#celery >=4.0,<5.0
+flask
+flask_httpauth
+flask_restful
+flask_restful_swagger
+boto
+tinys3
