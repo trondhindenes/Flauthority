@@ -73,7 +73,8 @@ def generate_certificate(self, task, type='flauthority'):
 
                     if return_code is not 0:
                         logger.error("error revoking cert returned exit code " + str(return_code))
-                        raise RuntimeError("error revoking cert returned exit code " + str(return_code))
+                        #raise RuntimeError("error revoking cert returned exit code " + str(return_code))
+                        #Its more important to issue a new cert than to revoke the old. I think. Leaving it like this for now
                     if appconfig['delete_expired_certs_from_storage_folder'].lower() == "yes":
                         logger.info("deleting foler " + folder_full_path)
                         shutil.rmtree(folder_full_path)
